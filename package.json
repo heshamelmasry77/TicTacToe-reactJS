@@ -1,0 +1,38 @@
+{
+  "name": "TicTacToe-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {},
+  "scripts": {
+    "start": "node server",
+    "heroku-postbuild": "cd react-ui/ && yarn --production=true && yarn run build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "react-ui/node_modules"
+  ],
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "file-system": "^2.2.2",
+    "mongoose": "^5.0.15",
+    "node": "^9.5.0",
+    "path": "^0.12.7",
+    "request": "^2.85.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "create-react-app",
+    "react"
+  ],
+  "author": "Hesham El Masry <heshamelmasry@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {}
+}

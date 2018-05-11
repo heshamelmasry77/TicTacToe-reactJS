@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700|Roboto:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script:400,700");
+.App {
+  flex: 1 0 auto;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  /* CSS Normalize */ }
+  .App input[type=reset], .App input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer; }
+  .App button[disabled], .App input[disabled] {
+    cursor: default; }
+  .App input[type=checkbox], .App input[type=radio] {
+    box-sizing: border-box;
+    padding: 0; }
+  .App input[type=search] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box; }
+  .App input[type=search]::-webkit-search-cancel-button, .App input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none; }
+  .App textarea {
+    overflow: auto;
+    vertical-align: top; }
+  .App table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+  .App body, .App figure {
+    margin: 0; }
+  .App legend, .App button::-moz-focus-inner, .App input::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+  .App * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40px;
+  vertical-align: -webkit-baseline-middle;
+  position: relative;
+  bottom: 10px; }
+
+.App-title {
+  font-size: 1.5em; }
+
+.App-intro {
+  font-size: large; }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
