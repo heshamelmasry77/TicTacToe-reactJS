@@ -1,0 +1,60 @@
+{
+  "name": "TicTacToe-front-end",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/react": "^16.0.25",
+    "axios": "^0.17.1",
+    "bootstrap": "^3.3.7",
+    "flow-bin": "^0.57.3",
+    "history": "^4.7.2",
+    "install": "^0.10.1",
+    "lint-staged": "^4.3.0",
+    "node-sass-chokidar": "0.0.3",
+    "npm": "^5.5.1",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.8.2",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.31.5",
+    "react-bootstrap-table": "^4.3.0",
+    "react-dom": "^16.1.1",
+    "react-icons": "^2.2.7",
+    "react-loadable": "^5.3.1",
+    "react-notify-toast": "^0.4.0",
+    "react-recaptcha": "^2.3.7",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "react-skylight": "^0.5.0",
+    "react-tap-event-plugin": "^3.0.2",
+    "redux": "^3.7.2",
+    "redux-form": "^7.2.0",
+    "styled-components": "^2.2.3"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "yarn run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "serve": "yarn npm-run-all -p watch-css start-js",
+    "heroku-postbuild": "yarn --production=true && yarn run build",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "flow": "flow"
+  },
+  "author": "Hesham El Masry <heshamelmasry@outlook.com>",
+  "devDependencies": {
+    "react-scripts": "1.0.17"
+  },
+  "proxy": "",
+  "homepage": ""
+}

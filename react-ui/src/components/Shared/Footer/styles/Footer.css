@@ -1,0 +1,11 @@
+.Footer {
+  flex-shrink: 0;
+  font-family: 'Josefin Sans', sans-serif;
+  padding: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+  color: white;
+  background-color: #232322;
+  transition: padding-left 0.5s ease;
+  position: relative;
+  bottom: 0; }
