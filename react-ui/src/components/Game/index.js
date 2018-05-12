@@ -30,6 +30,8 @@ class Game extends Component {
 
   // here is function take event and console my test
   clicked = (event) => {
+    if(this.state.gameEnded) return; // to avoid more clicking if game is ended!
+
     if (this.gameState.board[event.target.dataset.square] === "") {
       // console.log(event.target);
       //this will add the turn with index in to the array.
@@ -50,37 +52,39 @@ class Game extends Component {
       this.setState({
         gameEnded: true,
         winner: 'x',
-        winnerStatus: 'winner for now is X',
-        // board: Array(9).fill('')
+        winnerStatus: 'winner for now is X'
       });
+
       console.log('x winner');
-      console.log(this.state.gameEnded);
-      console.log(this.gameState.board);
-      let squares = document.getElementsByClassName("square");
-      for (let i = 0; i < squares.length; i++) {
-        squares[i].innerText = '';
-      }
+
+      // let squares = document.getElementsByClassName("square");
+      // for (let i = 0; i < squares.length; i++) {
+      //   squares[i].innerText = '';
+      // }
     }
     else if (gameResult === 'o') {
       this.setState({
         gameEnded: true,
         winner: 'o',
-        winnerStatus: 'winner for now is O',
-        // board: Array(9).fill('')
+        winnerStatus: 'winner for now is O'
       });
+
+
+
       console.log(this.state.gameEnded);
-      let squares = document.getElementsByClassName("square");
-      for (let i = 0; i < squares.length; i++) {
-        squares[i].innerText = '';
-      }
+      // let squares = document.getElementsByClassName("square");
+      // for (let i = 0; i < squares.length; i++) {
+      //   squares[i].innerText = '';
+      // }
     }
     if (gameResult === 'draw') {
       this.setState({
         gameEnded: true,
         winner: 'draw',
-        winnerStatus: 'winner for now is Draw',
-        // board: Array(9).fill('')
+        winnerStatus: 'winner for now is Draw'
       });
+
+
 
       // let squares = document.getElementsByClassName("square");
       // for (let i = 0; i < squares.length; i++) {
