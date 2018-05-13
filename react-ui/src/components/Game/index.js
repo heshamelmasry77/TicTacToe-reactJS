@@ -36,12 +36,13 @@ class Game extends Component {
     if(this.gameState.board[box.dataset.square] === '') {
       //this will add the turn with index in to the array.
 
-      this.gameState.board[box.dataset.square] = this.gameState.turn;
-      box.innerText = this.gameState.turn;
+      this.gameState.board[box.dataset.square] = this.gameState.turn; // here the turn is x
+      box.innerText = this.gameState.turn;// just changing the text of the box we clicked
 
-      this.gameState.turn = this.gameState.turn === 'x' ? 'o' : 'x';
+      this.gameState.turn = this.gameState.turn === 'x' ? 'o' : 'x';// changing the game turn value
 
-          this.gameState.totalMoves++;
+          this.gameState.totalMoves++;// here to use it to get the draw games
+      console.log(this.gameState.board);
     }
 
     console.log(this.gameState.totalMoves);
@@ -76,7 +77,6 @@ class Game extends Component {
         this.gameState.gameLocked = false;
         this.clicked(document.querySelectorAll('.square')[random]);
     }
-
   }
 
 
