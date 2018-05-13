@@ -19,6 +19,7 @@ class Game extends Component {
     this.gameState = {
       turn: 'x',
       gameEnded: false,
+      gameLocked: false,
       board: Array(9).fill(''),
       totalMoves: 0
     };
@@ -31,7 +32,7 @@ class Game extends Component {
 
 
   clicked(box) {
-    if (this.gameState.gameEnded) return; // to avoid more clicking if game is ended!
+    if (this.gameState.gameEnded || this.gameState.gameLocked) return; // to avoid more clicking if game is ended!
 
     if (this.gameState.board[box.dataset.square] === '') {
       //this will add the turn with index in to the array.
@@ -70,12 +71,7 @@ class Game extends Component {
     }
 
     if (this.gameState.turn === 'o' && !this.gameState.gameEnded) {
-      // this.gameState.gameLocked = true;
-      // do {
-      //   var random = Math.floor(Math.random()*9);
-      // } while(this.gameState.board[random] !== '');
-      // this.gameState.gameLocked = false;
-
+      this.gameState.gameLocked = true;
       api.submitGameDetails(this.gameState).then((res) => {
         console.log('api response', res);
         if (res) {
@@ -83,17 +79,19 @@ class Game extends Component {
             randomApiNumber: res
           })
         }
+        this.gameState.gameLocked = false;
         console.log('state', this.state);
         console.log('test');
         console.log(this.state);
         if (this.state.randomApiNumber !== undefined) {
           console.log('here');
-          this.clicked(document.querySelectorAll('.square')[this.state.randomApiNumber]);
+          setTimeout(() => {
+            this.clicked(document.querySelectorAll('.square')[this.state.randomApiNumber]);
+          }, 1000);
         }
       }).catch(error => {
         console.log(error);
       });
-
 
 
     }
