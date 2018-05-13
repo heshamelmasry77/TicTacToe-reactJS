@@ -10,11 +10,8 @@ const submitGameDetails = (gameData) => {
     }
   };
   return axios.post(`http://localhost:7000/api/game`,
-      gameData, config).then(response => {
-    // JSON responses are automatically parsed.
-  }).catch(e => {
-    // this.errors.push(e);
-    console.log('error');
+      gameData, config).then(response => response.data).catch(e => {
+    this.errors.push(e);
   });
 };
 

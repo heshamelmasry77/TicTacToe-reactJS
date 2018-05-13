@@ -13,8 +13,6 @@ const config = require('./config/config');
 app.use(cors());
 
 
-
-
 // const Project = require('./api/models/projectListModel'); //created model loading here
 
 // mongoose instance connection url connection
@@ -44,18 +42,28 @@ app.use(bodyParser.urlencoded({extended: true})); // handle URL-encoded data
 app.use(express.static(path.resolve(__dirname, './react-ui/build')));
 
 // Answer API requests.
-app.get('/api', function(req, res) {
+app.get('/api', function (req, res) {
   res.set('Content-Type', 'application/json');
   res.send('{"message":"Hello from the custom server!"}');
 });
 
-app.post('/api/game', function(req, res, next) {
+app.post('/api/game', function (req, res, next) {
   console.log(req.body);
-  res.send('got the game data');
+  if (req.body && req.body.totalMoves !== 9 &&  !req.body.gameEnded) {
+    let random = Math.floor(Math.random() * 9);
+
+    console.log('random number',random);
+    res.json(random);
+
+  } else {
+    //todo save the data to the database
+    res.send('save data to db');
+
+  }
 });
 
 
-app.get('*', function(request, response) {
+app.get('*', function (request, response) {
   response.sendFile(path.resolve(__dirname, './react-ui/build', 'index.html'));
 });
 

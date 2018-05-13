@@ -4,7 +4,7 @@
   "description": "",
   "engines": {},
   "scripts": {
-    "start": "node server",
+    "start": "nodemon server",
     "heroku-postbuild": "cd react-ui/ && yarn --production=true && yarn run build"
   },
   "cacheDirectories": [
@@ -34,5 +34,7 @@
   ],
   "author": "Hesham El Masry <heshamelmasry@outlook.com>",
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  }
 }
