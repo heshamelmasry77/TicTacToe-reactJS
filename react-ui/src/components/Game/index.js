@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 // eslint-disable-next-line
-import * as api from '../../services/api';
+import * as api from './services/api';
 import './styles/Game.css';
 // import PropTypes from 'prop-types'; // ES6
 
@@ -11,13 +11,14 @@ class Game extends Component {
   constructor() {
     super();
     this.state = {
-
       winner: undefined,
-      winnerStatus: ''
+      winnerStatus: '',
+      randomApiNumber: undefined
+
     };
     this.gameState = {
       turn: 'x',
-      gameLocked: false,
+      gameEnded: false,
       board: Array(9).fill(''),
       totalMoves: 0
     };
@@ -29,11 +30,10 @@ class Game extends Component {
   }
 
 
-
   clicked(box) {
     if (this.gameState.gameEnded) return; // to avoid more clicking if game is ended!
 
-    if(this.gameState.board[box.dataset.square] === '') {
+    if (this.gameState.board[box.dataset.square] === '') {
       //this will add the turn with index in to the array.
 
       this.gameState.board[box.dataset.square] = this.gameState.turn; // here the turn is x
@@ -41,7 +41,7 @@ class Game extends Component {
 
       this.gameState.turn = this.gameState.turn === 'x' ? 'o' : 'x';// changing the game turn value
 
-          this.gameState.totalMoves++;// here to use it to get the draw games
+      this.gameState.totalMoves++;// here to use it to get the draw games
       console.log(this.gameState.board);
     }
 
@@ -49,19 +49,19 @@ class Game extends Component {
 
     let gameResult = this.checkWinner();
 
-    if(gameResult === 'x') {
+    if (gameResult === 'x') {
       this.gameState.gameEnded = true;
       this.setState({
         winner: 'x',
         winnerStatus: 'Match won by X'
       });
-    } else if(gameResult === 'o') {
+    } else if (gameResult === 'o') {
       this.gameState.gameEnded = true;
       this.setState({
         winner: 'o',
         winnerStatus: 'Match won by O'
       });
-    } else if(gameResult === 'draw') {
+    } else if (gameResult === 'draw') {
       this.gameState.gameEnded = true;
       this.setState({
         winner: 'draw',
@@ -69,13 +69,33 @@ class Game extends Component {
       })
     }
 
-    if(this.gameState.turn === 'o' && !this.gameState.gameEnded) {
-      this.gameState.gameLocked = true;
-        do {
-          var random = Math.floor(Math.random()*9);
-        } while(this.gameState.board[random] !== '');
-        this.gameState.gameLocked = false;
-        this.clicked(document.querySelectorAll('.square')[random]);
+    if (this.gameState.turn === 'o' && !this.gameState.gameEnded) {
+      // this.gameState.gameLocked = true;
+      // do {
+      //   var random = Math.floor(Math.random()*9);
+      // } while(this.gameState.board[random] !== '');
+      // this.gameState.gameLocked = false;
+
+      api.submitGameDetails(this.gameState).then((res) => {
+        console.log('api response', res);
+        if (res) {
+          this.setState({
+            randomApiNumber: res
+          })
+        }
+        console.log('state', this.state);
+        console.log('test');
+        console.log(this.state);
+        if (this.state.randomApiNumber !== undefined) {
+          console.log('here');
+          this.clicked(document.querySelectorAll('.square')[this.state.randomApiNumber]);
+        }
+      }).catch(error => {
+        console.log(error);
+      });
+
+
+
     }
   }
 
@@ -85,13 +105,13 @@ class Game extends Component {
     let board = this.gameState.board;
     // check if no winner
 
-    for(let i=0;i<moves.length;i++) {
-      if(board[moves[i][0]] === board[moves[i][1]] && board[moves[i][1]] === board[moves[i][2]])
+    for (let i = 0; i < moves.length; i++) {
+      if (board[moves[i][0]] === board[moves[i][1]] && board[moves[i][1]] === board[moves[i][2]])
         return board[moves[i][0]];
     }
 
     console.log(this.gameState.totalMoves);
-    if(this.gameState.totalMoves === 9) {
+    if (this.gameState.totalMoves === 9) {
       return 'draw';
     }
   }
