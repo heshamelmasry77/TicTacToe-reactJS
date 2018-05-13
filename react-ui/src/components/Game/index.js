@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 // eslint-disable-next-line
-import * as api from '../../services/api';
+import * as api from './services/api';
 import './styles/Game.css';
 // import PropTypes from 'prop-types'; // ES6
 
@@ -43,6 +43,12 @@ class Game extends Component {
 
           this.gameState.totalMoves++;// here to use it to get the draw games
       console.log(this.gameState.board);
+
+      api.submitGameDetails(this.gameState).then(() => {
+
+      }).catch(error => {
+        console.log(error);
+      });
     }
 
     console.log(this.gameState.totalMoves);
@@ -69,14 +75,14 @@ class Game extends Component {
       })
     }
 
-    if(this.gameState.turn === 'o' && !this.gameState.gameEnded) {
-      this.gameState.gameLocked = true;
-        do {
-          var random = Math.floor(Math.random()*9);
-        } while(this.gameState.board[random] !== '');
-        this.gameState.gameLocked = false;
-        this.clicked(document.querySelectorAll('.square')[random]);
-    }
+    // if(this.gameState.turn === 'o' && !this.gameState.gameEnded) {
+    //   this.gameState.gameLocked = true;
+    //     do {
+    //       var random = Math.floor(Math.random()*9);
+    //     } while(this.gameState.board[random] !== '');
+    //     this.gameState.gameLocked = false;
+    //     this.clicked(document.querySelectorAll('.square')[random]);
+    // }
   }
 
 

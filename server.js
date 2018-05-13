@@ -49,6 +49,10 @@ app.get('/api', function(req, res) {
   res.send('{"message":"Hello from the custom server!"}');
 });
 
+app.post('/api/game', function(req, res, next) {
+  console.log(req.body);
+  res.send('got the game data');
+});
 
 
 app.get('*', function(request, response) {
