@@ -74,9 +74,7 @@ class Game extends Component {
         }
         this.gameState.gameLocked = false;
         if (this.state.randomApiNumber !== undefined) {
-          setTimeout(() => {
             this.clicked(document.querySelectorAll('.square')[this.state.randomApiNumber]);
-          }, 1000);
         }
       }).catch(error => {
       });
