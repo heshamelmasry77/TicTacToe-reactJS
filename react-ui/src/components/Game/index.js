@@ -3,9 +3,6 @@ import {Component} from 'react';
 // eslint-disable-next-line
 import * as api from './services/api';
 import './styles/Game.css';
-// import PropTypes from 'prop-types'; // ES6
-
-// import Footer from '../Shared/Footer/Footer';
 
 class Game extends Component {
   constructor() {
@@ -43,10 +40,7 @@ class Game extends Component {
       this.gameState.turn = this.gameState.turn === 'x' ? 'o' : 'x';// changing the game turn value
 
       this.gameState.totalMoves++;// here to use it to get the draw games
-      console.log(this.gameState.board);
     }
-
-    console.log(this.gameState.totalMoves);
 
     let gameResult = this.checkWinner();
 
@@ -73,24 +67,18 @@ class Game extends Component {
     if (this.gameState.turn === 'o' && !this.gameState.gameEnded) {
       this.gameState.gameLocked = true;
       api.submitGameDetails(this.gameState).then((res) => {
-        console.log('api response', res);
         if (res) {
           this.setState({
             randomApiNumber: res
           })
         }
         this.gameState.gameLocked = false;
-        console.log('state', this.state);
-        console.log('test');
-        console.log(this.state);
         if (this.state.randomApiNumber !== undefined) {
-          console.log('here');
           setTimeout(() => {
             this.clicked(document.querySelectorAll('.square')[this.state.randomApiNumber]);
           }, 1000);
         }
       }).catch(error => {
-        console.log(error);
       });
 
 
@@ -108,7 +96,6 @@ class Game extends Component {
         return board[moves[i][0]];
     }
 
-    console.log(this.gameState.totalMoves);
     if (this.gameState.totalMoves === 9) {
       return 'draw';
     }
@@ -135,7 +122,6 @@ class Game extends Component {
             <div className="square" data-square="7"></div>
             <div className="square" data-square="8"></div>
           </div>
-          {/*<Footer/>*/}
         </div>
     );
   }

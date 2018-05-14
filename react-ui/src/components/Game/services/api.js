@@ -2,7 +2,6 @@ import axios from 'axios';
 
 
 const submitGameDetails = (gameData) => {
-  console.log('gameData', gameData);
   const config = {
     headers: {
       'Content-Type': 'application/json',
