@@ -49,16 +49,13 @@ app.get('/api', function (req, res) {
 
 app.post('/api/game', function (req, res, next) {
   console.log(req.body);
-  if (req.body && req.body.totalMoves !== 9 &&  !req.body.gameEnded) {
+  if (req.body && req.body.totalMoves !== 9 && !req.body.gameEnded) {
     let random = Math.floor(Math.random() * 9);
 
-    console.log('random number',random);
+    console.log('random number', random);
     res.json(random);
-
   } else {
-    //todo save the data to the database
-    res.send('save data to db');
-
+    res.status(500).send('Something broke!')
   }
 });
 
