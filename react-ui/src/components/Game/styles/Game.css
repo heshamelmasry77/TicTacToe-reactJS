@@ -1,5 +1,5 @@
 .Game {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Permanent Marker', cursive;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -9,7 +9,8 @@
     flex: 0 0 100%;
     font-size: 36px; }
   .Game .game-header {
-    flex: 0 0 100%; }
+    flex: 0 0 100%;
+    font-family: 'Roboto', sans-serif; }
   .Game .game-board {
     flex: 0 0 300px;
     display: flex;
@@ -18,11 +19,35 @@
     .Game .game-board .square {
       width: 100px;
       height: 100px;
-      border: 1px solid black;
+      border: 2px solid black;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 36px;
+      font-size: 65px;
       cursor: pointer; }
       .Game .game-board .square:hover {
         background-color: lightgray; }
+      .Game .game-board .square.red {
+        color: #da2726; }
+      .Game .game-board .square.blue {
+        color: #232c7a; }
+      .Game .game-board .square:nth-child(1) {
+        border-top: none;
+        border-left: none; }
+      .Game .game-board .square:nth-child(2) {
+        border-top: none; }
+      .Game .game-board .square:nth-child(3) {
+        border-top: none;
+        border-right: none; }
+      .Game .game-board .square:nth-child(4) {
+        border-left: none; }
+      .Game .game-board .square:nth-child(6) {
+        border-right: none; }
+      .Game .game-board .square:nth-child(7) {
+        border-left: none;
+        border-bottom: none; }
+      .Game .game-board .square:nth-child(8) {
+        border-bottom: none; }
+      .Game .game-board .square:nth-child(9) {
+        border-bottom: none;
+        border-right: none; }

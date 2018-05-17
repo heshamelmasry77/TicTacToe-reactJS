@@ -36,7 +36,7 @@ class Game extends Component {
 
       this.gameState.board[box.dataset.square] = this.gameState.turn; // here the turn is x
       box.innerText = this.gameState.turn;// just changing the text of the box we clicked
-
+      box.innerText === 'o' ? box.classList.add("red") : box.classList.add("blue");//changing between classes
       this.gameState.turn = this.gameState.turn === 'x' ? 'o' : 'x';// changing the game turn value
 
       this.gameState.totalMoves++;// here to use it to get the draw games
@@ -66,20 +66,21 @@ class Game extends Component {
 
     if (this.gameState.turn === 'o' && !this.gameState.gameEnded) {
       this.gameState.gameLocked = true;
+
       api.submitGameDetails(this.gameState).then((res) => {
         if (res) {
           this.setState({
             randomApiNumber: res
           })
         }
-        this.gameState.gameLocked = false;
-        if (this.state.randomApiNumber !== undefined) {
+        setTimeout(() => {// to fire this function after a certain time
+          if (this.state.randomApiNumber !== undefined) {
+            this.gameState.gameLocked = false;
             this.clicked(document.querySelectorAll('.square')[this.state.randomApiNumber]);
-        }
+          }
+        }, 1000);
       }).catch(error => {
       });
-
-
     }
   }
 
@@ -107,7 +108,7 @@ class Game extends Component {
             {this.state.winnerStatus}
           </div>
           <div className="game-header">
-            <h3>TicTacToe</h3>
+            <h3>TicTacToe Board Game</h3>
           </div>
           <div className="game-board" onClick={(e) => this.clicked(e.target)}>
             <div className="square" data-square="0"></div>
