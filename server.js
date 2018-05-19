@@ -14,8 +14,6 @@ app.use(cors());
 app.use(bodyParser.json()); // <--- Here
 app.use(bodyParser.urlencoded({extended: true})); // handle URL-encoded data
 
-// // Priority serve any static files.
-app.use(express.static(path.resolve(__dirname, './react-ui/build')));
 
 // Answer API requests.
 app.get('/api', function (req, res) {
@@ -33,8 +31,14 @@ app.post('/api/game', function (req, res, next) {
 });
 
 
-app.get('*', function (request, response) {
-  response.sendFile(path.resolve(__dirname, './react-ui/build', 'index.html'));
+
+
+app.use(express.static(path.resolve(__dirname, './react-ui/build')));
+
+app.get('*', function(request, response) {
+  const filePath = path.resolve(__dirname, './react-ui/build', 'index.html');
+  response.readFileSync(filePath);
 });
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
