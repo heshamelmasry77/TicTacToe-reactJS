@@ -8,7 +8,7 @@ const submitGameDetails = (gameData) => {
       'Accept': 'application/json'
     }
   };
-  return axios.post(`http://localhost:7000/api/game`,
+  return axios.post(`https://tictacteo-hesh.herokuapp.com/api/game`,
       gameData, config).then(response => response.data).catch(e => {
     this.errors.push(e);
   });
