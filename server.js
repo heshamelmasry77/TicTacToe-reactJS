@@ -4,42 +4,16 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 7000;
 const fs = require('file-system');
-const config = require('./config/config');
 
 app.use(cors());
 
 
-// const Project = require('./api/models/projectListModel'); //created model loading here
-
-// mongoose instance connection url connection
-mongoose.Promise = global.Promise;
-
-let db_string;
-// if (process.env.hasOwnProperty('MONGODB_URI')) {
-//   db_string = process.env.MONGODB_URI;
-// } else {
-//   db_string = 'mongodb://localhost:27017/someDatabaseName';
-//   mongoose.set('debug', true);
-// }
-
-// mongoose.connect(db_string,
-//     function(err) {
-//       if (!err) {
-//         console.log('we are connected to mongodb server');
-//       } else {
-//         console.log('can\'t connect to mongodb server' + err);
-//       }
-//     });
-
 app.use(bodyParser.json()); // <--- Here
 app.use(bodyParser.urlencoded({extended: true})); // handle URL-encoded data
 
-// // Priority serve any static files.
-app.use(express.static(path.resolve(__dirname, './react-ui/build')));
 
 // Answer API requests.
 app.get('/api', function (req, res) {
@@ -57,8 +31,14 @@ app.post('/api/game', function (req, res, next) {
 });
 
 
-app.get('*', function (request, response) {
-  response.sendFile(path.resolve(__dirname, './react-ui/build', 'index.html'));
+
+
+app.use(express.static(path.resolve(__dirname, './react-ui/build')));
+
+app.get('*', function(request, response) {
+  const filePath = path.resolve(__dirname, './react-ui/build', 'index.html');
+  response.readFileSync(filePath);
 });
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

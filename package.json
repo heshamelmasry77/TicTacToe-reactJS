@@ -2,9 +2,10 @@
   "name": "TicTacToe-back-end",
   "version": "1.0.0",
   "description": "",
-  "engines": {},
-  "scripts": {
-    "start": "nodemon server",
+  "engines": {
+    "node": "9.11.x"
+  },  "scripts": {
+    "start": "node server",
     "heroku-postbuild": "cd react-ui/ && yarn --production=true && yarn run build"
   },
   "cacheDirectories": [
@@ -17,10 +18,8 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "file-system": "^2.2.2",
-    "mongoose": "^5.0.15",
     "node": "^9.5.0",
-    "path": "^0.12.7",
-    "request": "^2.85.0"
+    "path": "^0.12.7"
   },
   "repository": {
     "type": "git",
