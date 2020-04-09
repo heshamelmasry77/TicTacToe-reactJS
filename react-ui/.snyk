@@ -1,0 +1,52 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:extend:20180424':
+    - npm > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+    - npm > node-gyp > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+    - npm > npm-registry-client > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+    - node-sass-chokidar > node-sass > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+    - node-sass-chokidar > node-sass > node-gyp > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+    - npm > npm-lifecycle > node-gyp > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+    - react-scripts > fsevents > node-pre-gyp > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+    - npm > libcipm > npm-lifecycle > node-gyp > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+    - react-scripts > jest > jest-cli > jest-environment-jsdom > jsdom > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+    - react-scripts > jest > jest-cli > jest-config > jest-environment-jsdom > jsdom > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+    - react-scripts > jest > jest-cli > jest-runtime > jest-config > jest-environment-jsdom > jsdom > request > extend:
+        patched: '2020-04-02T06:01:14.332Z'
+  'npm:hoek:20180212':
+    - node-sass-chokidar > node-sass > request > hawk > hoek:
+        patched: '2020-04-02T06:01:14.332Z'
+    - node-sass-chokidar > node-sass > request > hawk > boom > hoek:
+        patched: '2020-04-02T06:01:14.332Z'
+    - node-sass-chokidar > node-sass > request > hawk > sntp > hoek:
+        patched: '2020-04-02T06:01:14.332Z'
+    - node-sass-chokidar > node-sass > request > hawk > cryptiles > boom > hoek:
+        patched: '2020-04-02T06:01:14.332Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - npm > pacote > make-fetch-happen > https-proxy-agent:
+        patched: '2020-04-02T06:01:14.332Z'
+    - npm > npm-profile > make-fetch-happen > https-proxy-agent:
+        patched: '2020-04-02T06:01:14.332Z'
+    - npm > npm-registry-fetch > make-fetch-happen > https-proxy-agent:
+        patched: '2020-04-02T06:01:14.332Z'
+    - npm > libcipm > pacote > make-fetch-happen > https-proxy-agent:
+        patched: '2020-04-02T06:01:14.332Z'
+  'npm:lodash:20180130':
+    - npm > npm-audit-report > cli-table2 > lodash:
+        patched: '2020-04-02T06:01:14.332Z'
+  'npm:tunnel-agent:20170305':
+    - node-sass-chokidar > node-sass > request > tunnel-agent:
+        patched: '2020-04-02T06:01:14.332Z'
