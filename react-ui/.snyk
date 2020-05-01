@@ -50,3 +50,18 @@ patch:
   'npm:tunnel-agent:20170305':
     - node-sass-chokidar > node-sass > request > tunnel-agent:
         patched: '2020-04-02T06:01:14.332Z'
+  SNYK-JS-LODASH-567746:
+    - lint-staged > lodash:
+        patched: '2020-05-01T06:01:07.187Z'
+    - react-redux > lodash:
+        patched: '2020-05-01T06:01:07.187Z'
+    - redux > lodash:
+        patched: '2020-05-01T06:01:07.187Z'
+    - redux-form > lodash:
+        patched: '2020-05-01T06:01:07.187Z'
+    - node-sass-chokidar > sass-graph > lodash:
+        patched: '2020-05-01T06:01:07.187Z'
+    - node-sass-chokidar > node-sass > sass-graph > lodash:
+        patched: '2020-05-01T06:01:07.187Z'
+    - node-sass-chokidar > node-sass > gaze > globule > lodash:
+        patched: '2020-05-01T06:01:07.187Z'
