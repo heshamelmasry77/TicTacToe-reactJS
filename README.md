@@ -4,7 +4,8 @@
 ### Try Deployed version here: https://tictacteo-hesh.herokuapp.com/
 
 It is a simple MERN app for a tic-tac-toe game!
-the project has the back-end and the front-end in the same folder.
+
+The project has the back-end and the front-end in the same folder.
 
 the front-end folder where react lives (react-UI)
 the back-end folder where I create the server (the main folder)
@@ -22,7 +23,7 @@ you have two choices to use the app served from the back-end or the front-end
 if you on the front-end folder do "yarn serve" and it will run on http://localhost:3000/
 or if you wanna serve it from the back-end folder: "yarn start" and it will run on http://localhost:7000/
 
-Note: it is very important to run yarn build on the front-end folder (react-UI)
+Note: it is important to run yarn build on the front-end folder (react-UI)
 
 
 on the main folder :
@@ -36,7 +37,7 @@ TO RUN: yarn serve
 
 
 
-Please keep the back-end running !! for the APIs
+Keep the back-end running !! for the APIs
 thank you,
 
 Hesh Ramsis
